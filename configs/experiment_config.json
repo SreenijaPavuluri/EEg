@@ -1,0 +1,83 @@
+{
+  "seed": 42,
+  "dataset": {
+    "name": "PhysioNet EEGMMIDB",
+    "moabb_class": "PhysionetMI",
+    "subjects": "1-30",
+    "paradigm": "MotorImagery",
+    "events": ["left_hand", "right_hand"],
+    "n_classes": 2,
+    "fmin": 8.0,
+    "fmax": 32.0,
+    "tmin": 0.0,
+    "tmax": 2.0,
+    "resample_hz": 128.0,
+    "n_channels": 64,
+    "citation": "Schalk et al. 2004; Goldberger et al. 2000"
+  },
+  "evaluation": {
+    "protocol": "LOSO (leave-one-subject-out)",
+    "n_subjects": 30,
+    "train_val_split": 0.8,
+    "metrics": ["accuracy", "balanced_accuracy", "f1_weighted",
+                "cohen_kappa", "auroc", "ece", "brier_score"]
+  },
+  "methods": {
+    "LogVar+LDA": {
+      "family": "classical",
+      "features": "log_band_power",
+      "bands": [[4,8],[8,13],[13,30]],
+      "classifier": "LDA"
+    },
+    "FBCSP+LDA": {
+      "family": "classical",
+      "n_csp_components": 4,
+      "bands": [[4,8],[8,12],[12,16],[16,20],[20,24],[24,28],[28,32]],
+      "classifier": "LDA",
+      "regularization": "ledoit_wolf"
+    },
+    "Riemann-MDM": {
+      "family": "riemannian",
+      "covariance_estimator": "lwf",
+      "metric": "riemann",
+      "classifier": "MDM"
+    },
+    "Riemann-TS+SVM": {
+      "family": "riemannian",
+      "covariance_estimator": "lwf",
+      "metric": "riemann",
+      "classifier": "SVC",
+      "svc_C": 1.0,
+      "svc_gamma": "scale",
+      "svc_kernel": "rbf"
+    },
+    "EEGNet": {
+      "family": "neural",
+      "F1": 8,
+      "D": 2,
+      "kernel_size": 64,
+      "dropout": 0.5,
+      "optimizer": "Adam",
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "n_epochs": 80,
+      "batch_size": 32,
+      "patience": 15,
+      "loss": "CrossEntropyLoss"
+    },
+    "ShallowConvNet": {
+      "family": "neural",
+      "n_filters_time": 40,
+      "n_filters_spat": 40,
+      "filter_time_length": 25,
+      "dropout": 0.5,
+      "optimizer": "Adam",
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "n_epochs": 80,
+      "batch_size": 32,
+      "patience": 15,
+      "loss": "CrossEntropyLoss"
+    }
+  }
+}

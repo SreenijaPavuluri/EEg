@@ -1,0 +1,10 @@
+venv/
+data/mne_data/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.DS_Store
+*.ipynb_checkpoints/
+results/logs/loso_results_checkpoint.csv
+*.edf

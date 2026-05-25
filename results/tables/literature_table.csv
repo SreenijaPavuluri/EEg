@@ -1,0 +1,31 @@
+Paper,Year,Venue,Task,Architecture,Pretraining,Datasets,Channel-Agnostic,Subject-Indep,Calibration,Code Available
+EEG-AI,2026,J. Neurosci. Methods,Preprocessing/Artifact,Agentic LLM,N/A,Multiple,No,N/A,No,Yes
+LUNA,2025,NeurIPS,General BCI,Transformer,SSL,Multiple,Yes,Partial,No,Yes
+FEMBA,2025,EMBC,General BCI,Bidirectional Mamba,SSL,Multiple,No,Partial,No,Yes
+LaBraM++,2025,Arxiv,General BCI,Codebook Transformer,SSL,Multiple,No,No,No,No
+MVPFormer,2025,Arxiv,Neuronal Activity,Multi-variate Parallel Attn,Supervised,iEEG,No,No,No,Yes
+MIRepNet,2025,Arxiv,Motor Imagery,Hybrid (SSL+Supervised),Hybrid,5 MI datasets,No,Yes,No,Yes
+M4CEA,2025,IEEE JBHI,Epilepsy,Knowledge-guided FM,Supervised,Pediatric EEG,No,No,No,Yes
+EEGMamba,2025,Neural Networks,General BCI,Mamba,SSL,Multiple,No,No,No,Yes
+CSBrain,2025,NeurIPS,General BCI,Cross-scale Spatiotemporal,SSL,Multiple,No,Partial,No,Yes
+DIVER-0,2025,ICML Workshop,General BCI,Channel Equivariant,SSL,Multiple,Yes,No,No,No
+CodeBrain,2025,Arxiv,General BCI,Multi-scale Decoupled,SSL,Multiple,No,No,No,No
+EEG FM Features,2025,Arxiv,Analysis,Transformer FM,Pretrained,Multiple,No,No,No,No
+Nested DL Model,2025,Arxiv,General BCI,Nested Deep Learning,SSL,Multiple,No,No,No,No
+ALFEE,2025,Arxiv,General BCI,Adaptive FM,SSL,Multiple,No,No,No,Partial
+CBraMod,2025,ICLR,General BCI,Criss-Cross Transformer,SSL,Multiple,No,No,No,Yes
+GEFM,2025,Arxiv,General BCI,Graph-Enhanced,SSL,Multiple,Yes (Graph),No,No,No
+Large Cognition Model,2025,Arxiv,General BCI,Transformer,SSL,Multiple,No,No,No,No
+LEAD,2025,Arxiv,Alzheimer Detection,Transformer FM,SSL+Supervised,11 EEG + 5 AD,No,Yes,No,Yes
+EEG Emotion Copilot,2025,Sci. Reports,Emotion,LLM+EEG,LLM Fine-tuning,Emotion EEG,No,No,No,Yes
+EEGPT,2024,NeurIPS,General BCI,Transformer,SSL,Multiple,No,No,No,Yes
+BrainWave,2024,Arxiv,Clinical,Transformer,SSL,Clinical EEG,No,No,No,No
+FoME,2024,Arxiv,General BCI,Temporal-Lateral Attn,SSL,Multiple,No,No,No,No
+NeuroLM,2024,ICLR 2025,General BCI,LLM+EEG,LLM Alignment,Multiple,No,No,No,Yes
+Mentality,2024,ICLR Workshop,General BCI,Mamba,SSL,Multiple,No,No,No,No
+LaBraM,2024,ICLR,General BCI,Codebook Transformer,SSL,Multiple,No,No,No,Yes
+EEGFormer,2024,AAAI Symposium,General BCI,Transformer,SSL,Multiple,No,No,No,No
+BIOT,2023,NeurIPS,Intracranial BCI,Contrastive SSL,SSL,Multiple,No,No,No,Yes
+Brant,2023,NeurIPS,Intracranial BCI,Transformer,SSL,Intracranial,No,No,No,No
+Neuro-GPT,2023,IEEE ISBI,General BCI,GPT,SSL,Multiple,No,No,No,Yes
+BrainBERT,2023,ICLR,Intracranial BCI,BERT,SSL,Intracranial,No,No,No,Yes
