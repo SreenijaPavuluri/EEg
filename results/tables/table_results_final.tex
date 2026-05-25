@@ -1,15 +1,18 @@
 \begin{table}[!t]
-\caption{LOSO Cross-Subject MI Results on PhysioNet EEGMMIDB (30 subjects). Mean\,$\pm$\,std across subjects. Best value per column in \textbf{bold}.}
+\caption{LOSO cross-subject MI results on PhysioNet EEGMMIDB (30 subjects, 45 trials/subject).
+Mean\,$\pm$\,std across subjects. \textbf{Bold} = best value per metric.
+Riemannian and Classical methods require no per-subject training.
+ECE and Brier: lower is better ($\downarrow$).}
 \label{tab:results}
-\centering
-\begin{tabular}{llccccc}
+\centering\small
+\begin{tabular}{llcccccr}
 \toprule
-Family & Method & Bal.~Acc. & $\kappa$ & AUROC & ECE$\downarrow$ & Brier$\downarrow$ \\
+Family & Method & Bal.~Acc.$\uparrow$ & $\kappa\uparrow$ & AUROC$\uparrow$ & ECE$\downarrow$ & Brier$\downarrow$ & Time(s) \\
 \midrule
-Classical & LogVar\texttt{+}LDA & 0.568\pm0.075 & 0.136\pm0.150 & 0.619\pm0.097 & 0.780\pm0.092 & 0.308\pm0.079 \\
-Classical & FBCSP\texttt{+}LDA & 0.563\pm0.058 & 0.127\pm0.118 & 0.624\pm0.083 & 0.708\pm0.044 & 0.266\pm0.033 \\
-Riemannian & Riemann-MDM & 0.539\pm0.052 & 0.078\pm0.106 & 0.691\pm0.100 & 0.707\pm0.141 & 0.296\pm0.089 \\
-Riemannian & Riemann-TS\texttt{+}SVM & 0.663\pm0.099 & 0.325\pm0.200 & 0.777\pm0.108 & 0.645\pm0.039 & 0.211\pm0.035 \\
+Classical   & LogVar+LDA      & 0.568$\pm$0.075 & 0.136$\pm$0.150 & 0.619$\pm$0.097 & 0.780$\pm$0.092 & 0.308$\pm$0.079 & 2 \\
+Classical   & FBCSP+LDA       & 0.563$\pm$0.058 & 0.127$\pm$0.118 & 0.624$\pm$0.083 & 0.708$\pm$0.044 & 0.266$\pm$0.033 & 36 \\
+Riemannian  & Riemann-MDM     & 0.539$\pm$0.052 & 0.078$\pm$0.106 & 0.691$\pm$0.100 & 0.707$\pm$0.141 & 0.296$\pm$0.089 & 10 \\
+Riemannian  & Riemann-TS+SVM  & \textbf{0.663$\pm$0.099} & \textbf{0.325$\pm$0.200} & \textbf{0.777$\pm$0.108} & \textbf{0.645$\pm$0.039} & \textbf{0.211$\pm$0.035} & 20 \\
 \bottomrule
 \end{tabular}
 \end{table}

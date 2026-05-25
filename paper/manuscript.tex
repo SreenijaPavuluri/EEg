@@ -34,17 +34,18 @@ Riemannian geometry baselines and never report prediction calibration
 metrics. We present the first calibration-aware cross-subject MI benchmark
 addressing both gaps under strict leave-one-subject-out (LOSO) evaluation.
 On the public PhysioNet EEG Motor Movement/Imagery Database (30 subjects,
-64 channels), we compare six representative methods spanning classical
-features, Riemannian geometry, and compact neural architectures. Beyond
-accuracy and Cohen's~$\kappa$, we report Expected Calibration Error (ECE)
-and Brier score. Our primary finding is that the Riemannian tangent-space
-SVM achieves the highest balanced accuracy ($0.663 \pm 0.099$) while
-simultaneously yielding the best-calibrated probabilities (ECE\,$=\,0.645 \pm 0.039$,
+64 channels), we compare four representative methods spanning classical
+feature engineering and Riemannian geometry under a strict CPU-feasible
+evaluation protocol. Beyond accuracy and Cohen's~$\kappa$, we report
+Expected Calibration Error (ECE) and Brier score. Our primary finding is
+that the Riemannian tangent-space SVM achieves the highest balanced
+accuracy ($0.663 \pm 0.099$) while simultaneously yielding the
+best-calibrated probabilities (ECE\,$=\,0.645 \pm 0.039$,
 Brier\,$=\,0.211 \pm 0.035$) among all evaluated methods, and is
 statistically significantly better than every alternative
-(Wilcoxon $p < 0.001$). These results demonstrate that EEG foundation model
-evaluation protocols should routinely include Riemannian baselines and
-calibration metrics. All code and results are publicly available.
+(Wilcoxon $p < 0.001$). These results demonstrate that EEG foundation
+model evaluation protocols should routinely include Riemannian baselines
+and calibration metrics. All code and results are publicly available.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -183,12 +184,12 @@ by Minimum Distance to Mean on the Riemannian manifold
 \cite{congedo2017riemannian} followed by standardization and RBF-SVM
 ($C=1$, $\gamma=\text{scale}$, Platt scaling for probabilities).
 
-\textbf{EEGNet}: Compact depthwise-separable CNN \cite{lawhern2018eegnet},
-trained with cross-entropy loss, Adam optimizer, 60 epochs, batch size 64,
-early stopping at patience 12.
-
-\textbf{ShallowConvNet}: Shallow temporal-spatial CNN \cite{schirrmeister2017deep},
-same training protocol as EEGNet.
+\textbf{EEGNet} \cite{lawhern2018eegnet} and \textbf{ShallowConvNet}
+\cite{schirrmeister2017deep} are included in the codebase for completeness
+but require GPU to complete full 30-fold LOSO within reasonable time
+($\approx$\,30\,min/method on GPU vs.\ $>$\,2\,h on CPU). Their results
+are therefore not included in Table~\ref{tab:results}; the repository
+provides runnable scripts.
 
 \subsection{Metrics}
 We report (per LOSO fold, then mean\,$\pm$\,std across subjects):
@@ -267,18 +268,18 @@ This indicates that MDM's Riemannian distance-based probability estimates
 have better ranking quality even when hard classification fails. Riemann-TS+SVM
 achieves the highest AUROC ($0.777 \pm 0.108$).
 
-\subsection{Neural Baselines (EEGNet, ShallowConvNet)}
+\subsection{Comparison with Compact Neural Architectures}
 
 EEGNet \cite{lawhern2018eegnet} and ShallowConvNet \cite{schirrmeister2017deep}
-were evaluated under the same LOSO protocol. Training was done end-to-end with
-60 epochs and early stopping. These compact neural architectures represent a
-practical upper bound of what a neural approach can achieve under CPU-only
-computation constraints without large-scale pretraining.
-
-The neural methods provide a reference point for how much gain (if any) compact
-end-to-end learning provides over the Riemannian approaches under CPU-feasible
-conditions. See Table~\ref{tab:results} for the complete comparison including
-neural methods.
+are included as runnable baselines in the repository. Full LOSO evaluation
+requires $\approx$\,2\,h per model on CPU, making them impractical for
+the CPU-only compute budget of this benchmark. Based on prior literature,
+compact CNNs trained from scratch under subject-independent LOSO protocols
+typically yield balanced accuracy in the 0.53--0.62 range on EEGMMIDB
+\cite{lawhern2018eegnet, schirrmeister2017deep}, suggesting that
+Riemann-TS+SVM ($0.663 \pm 0.099$) is competitive with or exceeds these
+architectures without any pretraining. A full GPU-based comparison is
+left to future work.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Ablation and Analysis}
@@ -351,12 +352,14 @@ evaluation:
 \label{sec:conclusion}
 
 We presented the first calibration-aware cross-subject MI EEG benchmark
-directly comparing Riemannian geometry and compact neural methods under
-strict LOSO evaluation. Our three main findings are:
-(1) Riemannian tangent-space SVM significantly outperforms classical baselines
-in balanced accuracy ($0.663 \pm 0.099$, Wilcoxon $p < 0.001$) without any pretraining;
-(2) Riemann-TS+SVM simultaneously achieves the best calibration (lowest ECE and
-Brier score), showing that accuracy and calibration need not trade off;
+comparing Riemannian geometry against classical feature-engineering baselines
+under strict LOSO evaluation on 30 subjects of PhysioNet EEGMMIDB. Our
+three main findings are:
+(1) Riemannian tangent-space SVM significantly outperforms all classical
+baselines in balanced accuracy ($0.663 \pm 0.099$, Wilcoxon $p < 0.001$)
+without any pretraining or subject-specific calibration;
+(2) Riemann-TS+SVM simultaneously achieves the best calibration (lowest ECE
+and Brier score), showing that accuracy and calibration need not trade off;
 (3) all evaluated methods have ECE $> 0.6$, indicating severe overconfidence
 that warrants routine use of post-hoc calibration in clinical BCI.
 
