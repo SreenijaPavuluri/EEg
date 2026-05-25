@@ -1,0 +1,5 @@
+,FBCSP+LDA,LogVar+LDA,Riemann-MDM,Riemann-TS+SVM
+FBCSP+LDA,,0.3931,0.0699,0.0
+LogVar+LDA,0.3818,,0.1142,0.0
+Riemann-MDM,0.0699,0.1094,,0.0
+Riemann-TS+SVM,0.0,0.0,0.0,

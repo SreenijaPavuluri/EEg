@@ -1,0 +1,15 @@
+\begin{table}[!t]
+\caption{LOSO Cross-Subject MI Results on PhysioNet EEGMMIDB (30 subjects). Mean\,$\pm$\,std across subjects. Best value per column in \textbf{bold}.}
+\label{tab:results}
+\centering
+\begin{tabular}{llccccc}
+\toprule
+Family & Method & Bal.~Acc. & $\kappa$ & AUROC & ECE$\downarrow$ & Brier$\downarrow$ \\
+\midrule
+Classical & LogVar\texttt{+}LDA & 0.568\pm0.075 & 0.136\pm0.150 & 0.619\pm0.097 & 0.780\pm0.092 & 0.308\pm0.079 \\
+Classical & FBCSP\texttt{+}LDA & 0.563\pm0.058 & 0.127\pm0.118 & 0.624\pm0.083 & 0.708\pm0.044 & 0.266\pm0.033 \\
+Riemannian & Riemann-MDM & 0.539\pm0.052 & 0.078\pm0.106 & 0.691\pm0.100 & 0.707\pm0.141 & 0.296\pm0.089 \\
+Riemannian & Riemann-TS\texttt{+}SVM & 0.663\pm0.099 & 0.325\pm0.200 & 0.777\pm0.108 & 0.645\pm0.039 & 0.211\pm0.035 \\
+\bottomrule
+\end{tabular}
+\end{table}
