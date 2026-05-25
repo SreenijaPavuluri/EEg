@@ -6,5 +6,5 @@ __pycache__/
 *.egg-info/
 .DS_Store
 *.ipynb_checkpoints/
-results/logs/loso_results_checkpoint.csv
+# results/logs/loso_results_checkpoint.csv  # keep checkpoint
 *.edf
