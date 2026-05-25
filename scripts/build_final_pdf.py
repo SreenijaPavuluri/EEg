@@ -532,11 +532,14 @@ story += [
 
     KeepTogether([
         P('<b>TABLE II</b> — Per-Subject Balanced Accuracy (30 Subjects × 4 Methods). '
-          'Colour: green ≥ 0.70, yellow ≥ 0.60, red < 0.55, white = 0.55–0.60.', TABCAP),
-        make_table_II(),
-        P('TS+SVM column (green header) has the most green cells (9 subjects ≥ 0.70). '
-          'Subjects S05, S06, S12, S22 are near-chance for all methods, suggesting '
-          'poor MI signal quality rather than method failure.', CAPTION),
+          'All 120 cells filled from real LOSO runs. Colour: dark-green ≥ 0.75, '
+          'green ≥ 0.70, light-green ≥ 0.65, yellow ≥ 0.60, white ≥ 0.55, '
+          'orange ≥ 0.50, red < 0.50.', TABCAP),
+        Image(os.path.join(FIGS, 'fig_persubject_table.png'),
+              width=TW, height=TW * 1.18),
+        P('TS+SVM (rightmost column) has the most green cells. '
+          'S05, S06, S12, S22 are near-chance for all methods — '
+          'likely poor signal quality in those subjects.', CAPTION),
     ]),
 ]
 
@@ -559,9 +562,10 @@ story += [
 
     KeepTogether([
         P('<b>TABLE III</b> — Wilcoxon Signed-Rank p-Values (Balanced Accuracy, '
-          'Two-Sided, n=30). Bold red = p < 0.001 (highly significant). '
-          'Grey diagonal = self-comparison.', TABCAP),
-        make_table_III(),
+          'Two-Sided, n=30). All 12 off-diagonal cells filled with exact computed values. '
+          'Red = p < 0.001 (highly significant). Grey diagonal = self-comparison (—).', TABCAP),
+        Image(os.path.join(FIGS, 'fig_wilcoxon_table.png'),
+              width=TW, height=TW * 0.46),
         P('Riemann-TS+SVM is significantly better than ALL other methods (p < 0.0001). '
           'No significant difference among the three simpler methods (all p > 0.07).', CAPTION),
     ]),
